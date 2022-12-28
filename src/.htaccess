@@ -1,0 +1,20 @@
+
+SetEnv PHP_VER 7
+SetEnv REGISTER_GLOBALS 0
+SetEnv MAGIC_QUOTES 0
+
+
+
+## Can be commented out if causes errors, see notes above.
+Options +FollowSymLinks
+
+## Mod_rewrite in use.
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^.*$ index.php [NC,L]
+RewriteRule ^(.*?\.php)/([^/]*)/([^/]*)(/.+)? $1$4?$2=$3 [NC,N,QSA]

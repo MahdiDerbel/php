@@ -1,0 +1,48 @@
+version : "3.7"
+services : 
+    web:
+      image: phpweb
+      volumes:
+         - files:/var/www/html/media/files
+         
+      ports:
+          - 99:80
+    db:
+         image: mysql:5.7
+         
+
+         volumes :
+            - db_data:/var/lib/mysql
+         environment:
+             MYSQL_ROOT_PASSWORD : 12345
+             MYSQL_DATABASE: module
+         ports:
+            - 3306:3306
+    phpmyadmin:
+
+          image : phpmyadmin
+
+          environment: 
+            PMA_ARBITRARY: 1
+            PMA_HOST: db
+            PMA_USER: root
+            PMA_PASSWORD: 12345
+          ports : 
+             - '8080:80'
+          depends_on:
+              - db
+
+
+    app:
+    #image: pdf-slicer
+      image: pdf-slicer
+      volumes:
+         - files:/app/files
+
+      ports:
+         - "4557:4557"
+
+volumes:
+  files:
+  db_data:
+    
