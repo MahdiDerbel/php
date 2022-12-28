@@ -1,7 +1,7 @@
 from fastapi import Form, File, UploadFile, Request, FastAPI
 from typing import List
 from fastapi.responses import HTMLResponse
-
+from fastapi.middleware.cors import CORSMiddleware
 from werkzeug.utils import secure_filename
 import json
 import os
@@ -15,7 +15,15 @@ import base64
 import pandas as pd
 
 app = FastAPI()
+origins = ["*"]
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 def extract_page_num(keyTerm,filename):
     
     
