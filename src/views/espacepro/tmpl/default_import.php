@@ -40,7 +40,7 @@ $('#loader').html('<div class="lds-ring"><div></div><div></div><div></div><div><
  <?php if($this->id_chapitre==0) { ?>                    
             $.ajax({
               type: 'POST',
-              url: 'http://localhost:4557/submit/',
+              url: 'http://54.36.183.243:96/submit/',
               data: form_data,
               contentType: false,
               cache: false,
