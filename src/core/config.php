@@ -2,7 +2,7 @@
 
 class Config
 {
-	var  $host_name="192.168.1.13";
+	var  $host_name="54.36.183.243";
 	var  $username="root";
 	var  $db_name="module";
 	var  $port="3306";
